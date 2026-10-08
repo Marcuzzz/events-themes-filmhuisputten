@@ -1,0 +1,473 @@
+/*
+ * Filmhuis Putten Theme
+ * =====================
+ * Inspired by filmhuisputten.nl
+ *
+ * Brand colours:
+ *   Blue     #129BDB  — top banner bar, page titles, footer background
+ *   Red      #E6332A  — sub-headings, event titles, CTA buttons
+ *   Dark     #3D3D3D  — filmstrip, navigation, body text
+ */
+
+/* ============================================
+   Color & typography tokens
+   ============================================ */
+:root {
+  /* Brand palette */
+  --primary-color:   #E6332A;
+  --primary-hover:   #c4271f;
+  --secondary-color: #129BDB;
+  --accent-color:    #129BDB;
+
+  /* Typography */
+  --text-color:      #3D3D3D;
+  --text-muted:      #666666;
+  --text-light:      #999999;
+  --font-family:     'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* Backgrounds */
+  --bg-color:        #ffffff;
+  --bg-secondary:    #f5f5f5;
+  --bg-dark:         #129BDB;
+
+  /* Borders & radius */
+  --border-color:    #e2e2e2;
+  --border-radius:   0;
+  --btn-radius:      0;
+
+  /* Shadows */
+  --shadow-sm:       0 1px 3px 0 rgb(0 0 0 / 0.06);
+  --shadow:          0 2px 10px 0 rgb(0 0 0 / 0.08);
+  --shadow-lg:       0 8px 24px 0 rgb(0 0 0 / 0.14);
+
+  /* Layout */
+  --container-width: 1400px;
+
+  /* Filmstrip */
+  --filmstrip-color: #3D3D3D;
+}
+
+/* ============================================
+   Body
+   ============================================ */
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.8;
+}
+
+/* ============================================
+   Top info banner (blue bar above header)
+   ============================================ */
+.site-topbar {
+  background: var(--secondary-color);
+  color: #ffffff;
+  font-size: 0.9375rem;
+  padding: 0.5rem 0;
+  text-align: right;
+}
+
+.site-topbar a {
+  color: #ffffff;
+}
+
+/* ============================================
+   Header
+   ============================================ */
+.site-header {
+  background: #ffffff;
+  border-bottom: none;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.06);
+}
+
+.site-header .container {
+  height: 100px;
+}
+
+/* Logo image */
+.site-logo {
+  font-size: 0;          /* hide fallback text */
+  display: inline-block;
+  width: 170px;
+  height: 62px;
+  background-image: url('/theme-assets/filmhuisputten/assets/logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left center;
+}
+
+/* ============================================
+   Filmstrip decoration — pure CSS
+   Dark band with white perforations, used on
+   top of the footer (like the site's footer
+   and newsletter block).
+   ============================================ */
+.site-footer::before {
+  content: '';
+  display: block;
+  box-sizing: content-box;
+  width: 100%;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  background-color: var(--filmstrip-color);
+  /* White perforations: 19px wide, 9px tall, 10px apart */
+  background-image: repeating-linear-gradient(
+    to right,
+    #ffffff 0 19px,
+    transparent 19px 29px
+  );
+  background-size: 100% 9px;
+  background-position: 5px center;
+  background-repeat: no-repeat;
+}
+
+/* ============================================
+   Navigation
+   ============================================ */
+.site-nav a {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #4e4e4e;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  transition: color 0.15s ease;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--secondary-color);
+}
+
+/* ============================================
+   Main content area
+   ============================================ */
+.site-main {
+  padding: 2.5rem 0 4rem;
+}
+
+/* ============================================
+   Headings
+   Page titles: large, blue, uppercase, light.
+   Sub-headings: red, regular weight.
+   ============================================ */
+h1, h2, h3, h4 {
+  font-family: var(--font-family);
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+}
+
+h3, h4 {
+  color: var(--primary-color);
+}
+
+h3 { font-size: 1.5rem; }
+
+/* Headings on coloured platform blocks inherit their white text */
+.membership-active-card :is(h1, h2, h3, h4),
+.dashboard-card-highlight :is(h1, h2, h3, h4),
+.hero :is(h1, h2, h3, h4) {
+  color: inherit;
+}
+
+/* ============================================
+   Membership card (account → Lidmaatschappen)
+   ============================================ */
+.membership-card-header h2 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.membership-card-body h3 {
+  font-weight: 700;
+}
+
+.membership-benefits h4 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Badge on the red card: white with red text instead of blue */
+.membership-active-card .badge {
+  background-color: #ffffff;
+  color: var(--primary-color);
+}
+
+/* ============================================
+   Hero — "WELKOM BIJ" (red) above "FILMHUIS PUTTEN" (blue), left-aligned on white
+   ============================================ */
+.hero {
+  background: var(--bg-color);
+  color: var(--text-color);
+  text-align: left;
+  padding: 5rem 0 3rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 1.05;
+  color: var(--secondary-color);
+}
+
+.hero .hero-title-prefix {
+  display: block;
+  font-size: 0.5em;
+  color: var(--primary-color);
+}
+
+.hero .hero-title-name {
+  display: block;
+}
+
+.hero p,
+.hero .hero-subtitle {
+  margin-left: 0;
+  opacity: 1;
+}
+
+/* ============================================
+   Cards & Event Cards
+   ============================================ */
+.card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  background: #ffffff;
+}
+
+.card-header {
+  background: transparent;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Event cards — poster on top, white body below */
+.event-card {
+  border: 1px solid #eeeeee;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.event-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Portrait poster image — matches the 800×1186 posters on the site */
+.event-card-image {
+  aspect-ratio: 27 / 40 !important;
+  width: 100%;
+  object-fit: cover;
+}
+
+.event-card-content {
+  padding: 1.5rem 2rem 2rem;
+  text-align: left;
+}
+
+/* Red bold title with a thin divider below */
+.event-card-title {
+  font-weight: 700;
+  color: var(--primary-color);
+  font-size: 1.375rem;
+  text-align: left;
+  line-height: 1.3;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Date row — "Vrijdag 11 december 2026 | 19:30 uur" */
+.event-card-date {
+  font-size: 1rem;
+  color: var(--text-color);
+  text-align: left;
+  margin-bottom: 1.25rem;
+}
+
+/* Red rectangular "meer info" button */
+.event-card .btn-primary,
+.event-card .btn {
+  background: var(--primary-color);
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 1.25rem;
+  padding: 0.5rem 2rem;
+  border-radius: var(--btn-radius);
+  text-transform: lowercase;
+}
+
+.event-card .btn-primary:hover,
+.event-card .btn:hover {
+  background: var(--primary-hover);
+  color: #ffffff;
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.btn {
+  font-family: var(--font-family);
+  font-weight: 400;
+  border-radius: var(--btn-radius);
+  padding: 10px 28px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background-color: #0f86bf;
+  color: #ffffff;
+}
+
+/* ============================================
+   Sections
+   ============================================ */
+.section {
+  padding: 3rem 0;
+}
+
+/* ============================================
+   Forms — square white fields
+   ============================================ */
+.form-control,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  font-family: var(--font-family);
+  color: var(--text-color);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-control:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgb(18 155 219 / 0.15);
+}
+
+/* ============================================
+   Alerts
+   ============================================ */
+.alert {
+  border: none;
+  border-radius: var(--border-radius);
+}
+
+/* ============================================
+   Auth card
+   ============================================ */
+.auth-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+/* ============================================
+   Badges
+   ============================================ */
+.badge {
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 0.75rem;
+  background-color: var(--secondary-color);
+  color: #ffffff;
+}
+
+/* ============================================
+   Footer — blue with filmstrip on top
+   ============================================ */
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-dark);
+  color: #ffffff;
+  padding: 0;
+}
+
+.site-footer > .container {
+  padding-top: 3.5rem;
+}
+
+.site-footer h4 {
+  color: #ffffff;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.site-footer p,
+.site-footer address {
+  color: #ffffff;
+}
+
+.site-footer a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.site-footer a:hover {
+  color: var(--primary-color);
+}
+
+/* White logo in the footer brand column */
+.footer-brand .site-logo,
+.footer-brand .site-logo:hover {
+  width: 180px;
+  height: 80px;
+  opacity: 1;
+  margin-bottom: 2rem;
+  background-image: url('/theme-assets/filmhuisputten/assets/logo-white.png');
+}
+
+.footer-content {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  padding-bottom: 2.5rem;
+  margin-bottom: 0;
+}
+
+.footer-bottom {
+  padding: 1.5rem 0 2rem;
+  font-size: 1rem;
+  color: #ffffff;
+  text-align: left;
+}

@@ -1,0 +1,12 @@
+{
+  "name": "events-themes-filmhuisputten",
+  "version": "1.0.0",
+  "type": "module",
+  "private": false,
+  "description": "Mustbe theme for Filmhuis Putten",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "validate": "node validate.js"
+  },
+  "devDependencies": {}
+}

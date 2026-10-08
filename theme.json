@@ -1,0 +1,10 @@
+{
+  "name": "filmhuisputten",
+  "version": "1.0.0",
+  "description": "Theme for Filmhuis Putten — inspired by filmhuisputten.nl",
+  "author": "Filmhuis Putten",
+  "license": "MIT",
+  "topbar": {
+    "text": "Filmhuis Putten, Brinkstraat 91, 3881 BP Putten"
+  }
+}
