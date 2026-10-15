@@ -373,19 +373,19 @@ h3 { font-size: 1.5rem; }
 
 /* ============================================
    Newsletter block — red band with filmstrip
-   edges. The block has no class of its own, so
-   it is targeted via its form action; !important
-   is needed to beat the inline styles.
+   edges. Scoped to .newsletter-block so the
+   /nieuwsbrief page keeps the regular form look;
+   !important is needed to beat the inline styles.
    ============================================ */
-.section:has(form[action="/nieuwsbrief"]) {
+.newsletter-block {
   position: relative;
   background: var(--primary-color) !important;
   padding: calc(2.5rem + 20px) 0;
   color: #ffffff;
 }
 
-.section:has(form[action="/nieuwsbrief"])::before,
-.section:has(form[action="/nieuwsbrief"])::after {
+.newsletter-block::before,
+.newsletter-block::after {
   content: '';
   position: absolute;
   left: 0;
@@ -402,41 +402,41 @@ h3 { font-size: 1.5rem; }
   background-repeat: no-repeat;
 }
 
-.section:has(form[action="/nieuwsbrief"])::before { top: 0; }
-.section:has(form[action="/nieuwsbrief"])::after  { bottom: 0; }
+.newsletter-block::before { top: 0; }
+.newsletter-block::after  { bottom: 0; }
 
-.section:has(form[action="/nieuwsbrief"]) .container {
+.newsletter-block .container {
   max-width: 640px !important;
 }
 
-.section:has(form[action="/nieuwsbrief"]) .section-title {
+.newsletter-block .section-title {
   color: #ffffff;
   text-transform: uppercase;
   margin-bottom: 1.25rem;
 }
 
-.section:has(form[action="/nieuwsbrief"]) p {
+.newsletter-block p {
   color: #ffffff !important;
 }
 
 /* Name fields first, then e-mail, consent, button */
-.section form[action="/nieuwsbrief"] {
+.newsletter-block form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.section form[action="/nieuwsbrief"] .form-group {
+.newsletter-block form .form-group {
   margin: 0;
 }
 
-.section form[action="/nieuwsbrief"] .form-group:nth-child(1) { order: 2; }
-.section form[action="/nieuwsbrief"] .form-group:nth-child(2) { order: 1; }
-.section form[action="/nieuwsbrief"] .form-group:nth-child(3) { order: 3; }
-.section form[action="/nieuwsbrief"] > div:last-child         { order: 4; }
+.newsletter-block form .form-group:nth-child(1) { order: 2; }
+.newsletter-block form .form-group:nth-child(2) { order: 1; }
+.newsletter-block form .form-group:nth-child(3) { order: 3; }
+.newsletter-block form > div:last-child         { order: 4; }
 
 /* Field labels hidden visually; placeholders take over */
-.section form[action="/nieuwsbrief"] label:not(:has(input)) {
+.newsletter-block form label:not(:has(input)) {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -445,24 +445,24 @@ h3 { font-size: 1.5rem; }
   white-space: nowrap;
 }
 
-.section form[action="/nieuwsbrief"] .form-control {
+.newsletter-block form .form-control {
   border: none;
   padding: 0.85rem 1rem;
   font-size: 1rem;
 }
 
-.section form[action="/nieuwsbrief"] .form-control::placeholder {
+.newsletter-block form .form-control::placeholder {
   color: var(--text-color);
   opacity: 1;
 }
 
-.section form[action="/nieuwsbrief"] label:has(input) {
+.newsletter-block form label:has(input) {
   color: #ffffff;
   font-size: 0.9rem;
   font-weight: 400;
 }
 
-.section form[action="/nieuwsbrief"] .btn-primary {
+.newsletter-block form .btn-primary {
   display: block;
   width: 100%;
   padding: 0.95rem 1rem;
@@ -470,7 +470,7 @@ h3 { font-size: 1.5rem; }
   background-color: var(--secondary-color);
 }
 
-.section form[action="/nieuwsbrief"] .btn-primary:hover {
+.newsletter-block form .btn-primary:hover {
   background-color: #0f86bf;
 }
 
