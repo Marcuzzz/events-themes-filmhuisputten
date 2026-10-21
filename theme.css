@@ -82,7 +82,13 @@ body {
 }
 
 .site-header .container {
-  height: 100px;
+  height: auto;
+  min-height: 100px;
+  gap: 2rem;
+}
+
+.site-logo {
+  flex-shrink: 0;
 }
 
 /* Logo image */
@@ -138,6 +144,64 @@ body {
 .site-nav a:hover,
 .site-nav a.active {
   color: var(--secondary-color);
+}
+
+.site-nav a {
+  white-space: nowrap;
+}
+
+/* Too many items for one row: wrap to a second row instead of
+   breaking labels over several lines */
+@media (min-width: 769px) {
+  .site-nav {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    row-gap: 0.25rem;
+  }
+}
+
+/* Dropdown submenus (configured in the dashboard) */
+.nav-dropdown-menu {
+  top: calc(100% + 0.75rem);
+  min-width: 220px;
+  border: 0;
+  border-top: 3px solid var(--secondary-color);
+  border-radius: 0;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Bridge the gap so the menu stays open while moving the mouse into it */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(-0.75rem - 3px);
+  height: 0.75rem;
+}
+
+.site-nav .nav-dropdown-menu a {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-transform: none;
+  color: #4e4e4e;
+}
+
+.site-nav .nav-dropdown-menu a:hover {
+  background: var(--bg-secondary);
+  color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  .nav-dropdown-menu {
+    border-top: 0;
+    box-shadow: none;
+  }
+
+  .nav-dropdown-menu::before {
+    display: none;
+  }
 }
 
 /* ============================================
@@ -579,9 +643,80 @@ select:focus {
   margin-bottom: 0;
 }
 
+.footer-brand {
+  flex-shrink: 0;
+}
+
+/* Footer links in vertical columns of four instead of one wrapping row */
+.footer-links {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(4, auto);
+  column-gap: 3.5rem;
+  row-gap: 0.6rem;
+}
+
+.footer-links a {
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .footer-links {
+    grid-auto-flow: row;
+    grid-template-rows: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.5rem;
+    width: 100%;
+  }
+
+  .footer-links a {
+    white-space: normal;
+  }
+}
+
 .footer-bottom {
   padding: 1.5rem 0 2rem;
   font-size: 1rem;
   color: #ffffff;
   text-align: left;
+}
+
+/* ============================================
+   Cookie consent banner — filmstrip on top,
+   blue uppercase title like the page headings
+   ============================================ */
+.cookie-consent {
+  --cookie-consent-accent: var(--secondary-color);
+  border-top: 0;
+  padding-top: calc(20px + 1.25rem);
+}
+
+.cookie-consent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background-color: var(--filmstrip-color);
+  background-image: repeating-linear-gradient(
+    to right,
+    #ffffff 0 19px,
+    transparent 19px 29px
+  );
+  background-size: 100% 9px;
+  background-position: 5px center;
+  background-repeat: no-repeat;
+}
+
+.cookie-consent-title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+}
+
+.cookie-consent-text {
+  color: var(--text-color);
 }
